@@ -16,9 +16,9 @@ import { Form } from '@unform/mobile';
 import * as Yup from 'yup';
 
 import logoImg from '../../../../assets/logo.png';
-import Button from '../../../../components/Button';
-import Input from '../../../../components/Input';
 import { useAuth } from '../../../../hooks/auth';
+import Button from '../../../../shared/components/Button';
+import Input from '../../../../shared/components/Input';
 import getValidationErrors from '../../../../utils/getValidationErrors';
 
 import {
