@@ -3,8 +3,8 @@ import { StatusBar } from 'react-native';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-import AppointmentCreated from '../modules/appointment/AppointmentCreated';
-import CreateAppointment from '../modules/appointment/CreateAppointment';
+import AppointmentCreated from '../modules/appointment/pages/AppointmentCreated';
+import CreateAppointment from '../modules/appointment/pages/CreateAppointment';
 import Dashboard from '../modules/dashboard/pages/Dashboard';
 import Profile from '../modules/user/pages/Profile';
 

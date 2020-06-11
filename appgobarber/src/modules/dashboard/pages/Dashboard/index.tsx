@@ -77,6 +77,7 @@ const Dashboard: React.FC = () => {
         ListHeaderComponent={
           <PorvidersListTitle>Barbearias</PorvidersListTitle>
         }
+        showsVerticalScrollIndicator={false}
         renderItem={({ item: provider }) => (
           <ProviderContainer
             onPress={() => navigateToCreateAppointment(provider.id)}
