@@ -2,7 +2,7 @@ import React from 'react';
 
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Dashboard from '../pages/Dashboard';
+import Dashboard from '../modules/dashboard/pages/Dashboard';
 
 const App = createStackNavigator();
 
