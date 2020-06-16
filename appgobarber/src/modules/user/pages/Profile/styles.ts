@@ -27,6 +27,15 @@ export const UserAvatar = styled.Image`
   align-self: center;
 `;
 
+export const ConteinerButton = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
 export const BackButton = styled.TouchableOpacity`
+  margin-top: 40px;
+`;
+
+export const SignOutButton = styled.TouchableOpacity`
   margin-top: 40px;
 `;

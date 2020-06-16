@@ -27,7 +27,9 @@ import {
   Title,
   UserAvatarButton,
   UserAvatar,
+  ConteinerButton,
   BackButton,
+  SignOutButton,
 } from './styles';
 
 interface ProfileFormData {
@@ -39,7 +41,7 @@ interface ProfileFormData {
 }
 
 const Profile: React.FC = () => {
-  const { user, updateUser } = useAuth();
+  const { user, updateUser, signOut } = useAuth();
 
   const formRef = useRef<FormHandles>(null);
   const emailInputRef = useRef<TextInput>(null);
@@ -141,19 +143,27 @@ const Profile: React.FC = () => {
           return;
         }
         if (response.error) {
-          console.log(response.error);
           Alert.alert('Erro ao atualizar seu avatar.');
           return;
         }
 
-        const source = { uri: response.uri };
-        console.log(source);
+        const data = new FormData();
+
+        data.append('avatar', {
+          type: 'image/jpeg',
+          name: `${user.id}.jpg`,
+          uri: response.uri,
+        });
+
+        api.patch('users/avatar', data).then((apiResponse) => {
+          updateUser(apiResponse.data);
+        });
 
         // You can also display the image using data:
         // const source = { uri: 'data:image/jpeg;base64,' + response.data };
       },
     );
-  }, []);
+  }, [user.id, updateUser]);
 
   return (
     <>
@@ -171,9 +181,15 @@ const Profile: React.FC = () => {
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{ paddingBottom: 34 }}
           >
-            <BackButton onPress={handleGoBack}>
-              <Icon name="chevron-left" size={34} color="#999591" />
-            </BackButton>
+            <ConteinerButton>
+              <BackButton onPress={handleGoBack}>
+                <Icon name="chevron-left" size={30} color="#999591" />
+              </BackButton>
+
+              <SignOutButton onPress={signOut}>
+                <Icon name="log-out" size={24} color="#999591" />
+              </SignOutButton>
+            </ConteinerButton>
 
             <UserAvatarButton onPress={handleUpdateAvatar}>
               <UserAvatar source={{ uri: user.avatar_url }} />
